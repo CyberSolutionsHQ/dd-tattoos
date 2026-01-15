@@ -1,0 +1,22 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 120 120"
+  role="img"
+  aria-labelledby="corner-ornament-title corner-ornament-desc"
+>
+  <title id="corner-ornament-title">Corner ornament</title>
+  <desc id="corner-ornament-desc">Decorative corner filigree for cards and frames.</desc>
+  <g fill="none" stroke="var(--gold, currentColor)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 30V10h20" />
+    <path d="M10 50c15-5 25-15 30-30" />
+    <path d="M18 70c24-8 40-24 48-48" />
+    <path d="M10 10l18 18" />
+    <path d="M36 10l-6 6" />
+    <path d="M10 36l6-6" />
+  </g>
+  <g fill="var(--ember, currentColor)">
+    <circle cx="10" cy="10" r="2" />
+    <circle cx="32" cy="32" r="1.5" />
+    <circle cx="18" cy="50" r="1.2" />
+  </g>
+</svg>

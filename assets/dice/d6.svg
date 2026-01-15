@@ -1,0 +1,22 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 200 200"
+  role="img"
+  aria-labelledby="d6-title d6-desc"
+>
+  <title id="d6-title">D6 dice</title>
+  <desc id="d6-desc">Isometric six-sided die showing six pips.</desc>
+  <g fill="none" stroke="var(--gold, currentColor)" stroke-width="3" stroke-linejoin="round">
+    <path d="M40 70l60-35 60 35v80l-60 35-60-35V70z" />
+    <path d="M40 70l60 35 60-35" />
+    <path d="M100 105v80" />
+  </g>
+  <g fill="var(--ink, currentColor)">
+    <circle cx="80" cy="95" r="6" />
+    <circle cx="120" cy="95" r="6" />
+    <circle cx="80" cy="125" r="6" />
+    <circle cx="120" cy="125" r="6" />
+    <circle cx="80" cy="155" r="6" />
+    <circle cx="120" cy="155" r="6" />
+  </g>
+</svg>

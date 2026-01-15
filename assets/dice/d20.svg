@@ -1,0 +1,18 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 200 200"
+  role="img"
+  aria-labelledby="d20-title d20-desc"
+>
+  <title id="d20-title">D20 dice</title>
+  <desc id="d20-desc">Wireframe twenty-sided die with a centered 20.</desc>
+  <g fill="none" stroke="var(--gold, currentColor)" stroke-width="3" stroke-linejoin="round">
+    <polygon points="100,10 180,70 155,185 45,185 20,70" />
+    <path d="M100 10L45 185M100 10L155 185M20 70l80 50 80-50" />
+    <path d="M45 185l55-65 55 65" />
+    <path d="M20 70H180" />
+  </g>
+  <g fill="var(--ember, currentColor)">
+    <text x="100" y="115" font-size="36" text-anchor="middle" font-family="serif">20</text>
+  </g>
+</svg>

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+  <defs>
+    <style>
+      .icon-stroke {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .icon-fill {
+        fill: currentColor;
+      }
+    </style>
+  </defs>
+
+  <symbol id="icon-d20" viewBox="0 0 24 24">
+    <path class="icon-stroke" d="M12 2l7.5 5.5-2 12.5H6.5l-2-12.5L12 2z" />
+    <path class="icon-stroke" d="M12 2v18M4.5 7.5l7.5 4 7.5-4" />
+    <path class="icon-stroke" d="M6.5 20l5.5-8 5.5 8" />
+  </symbol>
+
+  <symbol id="icon-d6" viewBox="0 0 24 24">
+    <path class="icon-stroke" d="M6 7l6-4 6 4v10l-6 4-6-4V7z" />
+    <path class="icon-stroke" d="M6 7l6 4 6-4" />
+    <circle class="icon-fill" cx="12" cy="13" r="1" />
+    <circle class="icon-fill" cx="9" cy="11" r="1" />
+    <circle class="icon-fill" cx="15" cy="11" r="1" />
+    <circle class="icon-fill" cx="9" cy="15" r="1" />
+    <circle class="icon-fill" cx="15" cy="15" r="1" />
+  </symbol>
+
+  <symbol id="icon-rune" viewBox="0 0 24 24">
+    <path class="icon-stroke" d="M3 12h5l2-3 4 6 2-3h5" />
+    <path class="icon-stroke" d="M8 12l2.5 2.5L12 12l1.5 2.5L16 12" />
+  </symbol>
+
+  <symbol id="icon-spark" viewBox="0 0 24 24">
+    <path class="icon-stroke" d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8L12 3z" />
+  </symbol>
+
+  <symbol id="icon-map-pin" viewBox="0 0 24 24">
+    <path class="icon-stroke" d="M12 21s6-6 6-11a6 6 0 10-12 0c0 5 6 11 6 11z" />
+    <circle class="icon-stroke" cx="12" cy="10" r="2.5" />
+  </symbol>
+
+  <symbol id="icon-sword" viewBox="0 0 24 24">
+    <path class="icon-stroke" d="M5 19l4-4m0 0l8-8 2 2-8 8m-2 2l-2 2" />
+    <path class="icon-stroke" d="M14 6l2-2 4 4-2 2" />
+  </symbol>
+
+  <symbol id="icon-wand" viewBox="0 0 24 24">
+    <path class="icon-stroke" d="M4 20l10-10" />
+    <path class="icon-stroke" d="M14 4l1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2z" />
+    <circle class="icon-fill" cx="6" cy="18" r="1" />
+  </symbol>
+
+  <symbol id="icon-calendar" viewBox="0 0 24 24">
+    <rect class="icon-stroke" x="4" y="6" width="16" height="14" rx="2" />
+    <path class="icon-stroke" d="M8 3v4M16 3v4M4 10h16" />
+  </symbol>
+
+  <symbol id="icon-scroll" viewBox="0 0 24 24">
+    <path class="icon-stroke" d="M6 7h10a3 3 0 010 6H8" />
+    <path class="icon-stroke" d="M6 7a3 3 0 100 6" />
+    <path class="icon-stroke" d="M8 13h10a3 3 0 010 6H10" />
+  </symbol>
+
+  <symbol id="icon-instagram" viewBox="0 0 24 24">
+    <rect class="icon-stroke" x="4" y="4" width="16" height="16" rx="4" />
+    <circle class="icon-stroke" cx="12" cy="12" r="4" />
+    <circle class="icon-fill" cx="17" cy="7" r="1" />
+  </symbol>
+
+  <symbol id="icon-facebook" viewBox="0 0 24 24">
+    <path class="icon-stroke" d="M14 8h3V5h-3a4 4 0 00-4 4v2H7v3h3v6h3v-6h3l1-3h-4V9a1 1 0 011-1z" />
+  </symbol>
+</svg>

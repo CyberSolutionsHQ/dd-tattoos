@@ -1,0 +1,26 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 600 40"
+  role="img"
+  aria-labelledby="rune-divider-title rune-divider-desc"
+>
+  <title id="rune-divider-title">Rune divider</title>
+  <desc id="rune-divider-desc">A horizontal divider with runic glyphs and diamond accents.</desc>
+  <g fill="none" stroke="var(--gold, currentColor)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 20h120" />
+    <path d="M460 20h120" />
+    <path d="M160 20h80M360 20h80" />
+    <path d="M300 6l8 8-8 8-8-8 8-8z" />
+    <path d="M210 12l10 8-10 8-10-8 10-8z" />
+    <path d="M390 12l10 8-10 8-10-8 10-8z" />
+    <path d="M248 10l8 10-8 10-8-10 8-10z" />
+    <path d="M352 10l8 10-8 10-8-10 8-10z" />
+    <path d="M270 14l6 6-6 6-6-6 6-6z" />
+    <path d="M330 14l6 6-6 6-6-6 6-6z" />
+  </g>
+  <g fill="var(--ember, currentColor)">
+    <circle cx="300" cy="20" r="2" />
+    <circle cx="210" cy="20" r="1.5" />
+    <circle cx="390" cy="20" r="1.5" />
+  </g>
+</svg>
