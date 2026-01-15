@@ -9,39 +9,22 @@
       content="Dungeon Dweller Tattoos - a fantasy tattoo tavern opening in Gautier, MS. Book appointments, meet the artists, and explore events."
     />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="assets/fx/wall_fx.css" />
     <script defer src="app.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="hero" id="hero">
-      <aside
-        class="site-announcement"
-        role="status"
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        <span role="img" aria-label="Website under construction">
-          🚧website under construction🚧
-        </span>
-      </aside>
-      <div class="wallFxStage">
-        <img
-          class="hero__image wallBg"
-          src="assets/wall.png"
-          alt="Dungeon Dweller Tattoos fantasy castle wall with torches"
-        />
-        <div class="torchFx left" aria-hidden="true"></div>
-        <div class="torchFx right" aria-hidden="true"></div>
-        <div class="smokeFx left" aria-hidden="true"></div>
-        <div class="smokeFx right" aria-hidden="true"></div>
-      </div>
+      <img
+        class="hero__image"
+        src="assets/wall.png"
+        alt="Dungeon Dweller Tattoos fantasy castle wall with torches"
+      />
     </header>
 
     <header class="site-header">
       <nav class="nav" aria-label="Primary">
-        <a class="logo" href="#hero">Dungeon Dweller Tattoos</a>
+        <a class="logo" href="index.html">Dungeon Dweller Tattoos</a>
         <button
           class="nav-toggle"
           type="button"
@@ -54,39 +37,91 @@
           <span class="nav-toggle__bar"></span>
         </button>
         <ul class="nav-menu" id="nav-menu">
-          <li><a href="#about">About</a></li>
-          <li><a href="#artists">Artists</a></li>
-          <li><a href="#events">Events</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#location">Location</a></li>
-          <li><a href="#book">Book</a></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about/">About</a></li>
+          <li><a href="artists/">Artists</a></li>
+          <li><a href="events/">Events</a></li>
+          <li><a href="/services/index.html">Services</a></li>
+          <li><a href="location/">Location</a></li>
+          <li><a href="book/">Book</a></li>
         </ul>
       </nav>
     </header>
 
     <main id="main">
-      <section class="section reveal" id="about" data-reveal>
-        <div class="section__header">
-          <h1>About the Studio</h1>
-          <p>
-            Dungeon Dweller Tattoos is a fantasy tavern of ink and emberlight.
-            Replace this copy with the founder's story, mission, and inspirations.
+      <section class="section hero__content reveal" data-reveal>
+        <div class="hero__callout">
+          <h1>Dungeon Dweller Tattoos</h1>
+          <p class="hero__tagline">
+            A fantasy tattoo tavern where ink, emberlight, and legends meet.
           </p>
-          <a class="text-link" href="#origin">Read the origin story</a>
-        </div>
-        <div class="panel" id="origin">
-          <h2>Origin Story (Editable)</h2>
-          <p>
-            A short, editable block for the full story. Add milestones, the first
-            flash sheet, and the dream behind the guild hall.
-          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="book/">Book a Session</a>
+            <a class="btn btn--ghost" href="/services/index.html">Explore the Guild</a>
+          </div>
         </div>
       </section>
 
-      <section class="section section--panel reveal" id="artists" data-reveal>
+      <section class="section reveal" data-reveal>
+        <div class="section__header">
+          <h2>What Makes Us Different</h2>
+          <p>The guild hall blends ritual, artistry, and community under one torchlit roof.</p>
+        </div>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Fantasy Tavern Atmosphere</h3>
+            <p>Stone, ember, and story-driven spaces that make every session feel legendary.</p>
+          </article>
+          <article class="card">
+            <h3>Artists with Distinct Quests</h3>
+            <p>Each artist specializes in a signature style, from glyphwork to vivid mythic color.</p>
+          </article>
+          <article class="card">
+            <h3>Community-Fueled Events</h3>
+            <p>Flash days, game nights, and artisan showcases keep the hall buzzing.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--panel reveal" data-reveal>
+        <div class="section__header">
+          <h2>Featured Services</h2>
+          <p>Beyond tattoos, the guild hosts experiences and artisan offerings all week long.</p>
+          <a class="text-link" href="/services/index.html">View all services</a>
+        </div>
+        <div class="service-grid">
+          <a class="service" href="/services/tooth-gems/index.html">
+            <span class="service__icon" aria-hidden="true">&#10022;</span>
+            <span>Tooth gems</span>
+          </a>
+          <a class="service" href="/services/oddities-and-rarities/index.html">
+            <span class="service__icon" aria-hidden="true">&#10022;</span>
+            <span>Oddities and rarities</span>
+          </a>
+          <a class="service" href="/services/handmade-goods/index.html">
+            <span class="service__icon" aria-hidden="true">&#10022;</span>
+            <span>Handmade goods</span>
+          </a>
+          <a class="service" href="/services/henna/index.html">
+            <span class="service__icon" aria-hidden="true">&#10022;</span>
+            <span>Henna</span>
+          </a>
+          <a class="service" href="/services/art-classes/index.html">
+            <span class="service__icon" aria-hidden="true">&#10022;</span>
+            <span>Art classes</span>
+          </a>
+          <a class="service" href="/services/dnd-hosting/index.html">
+            <span class="service__icon" aria-hidden="true">&#10022;</span>
+            <span>D and D hosting</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section reveal" data-reveal>
         <div class="section__header">
           <h2>Meet the Party</h2>
-          <p>Four artists, one quest. Names and specialties are placeholders.</p>
+          <p>Three featured artists leading the charge. Get to know the full roster.</p>
+          <a class="text-link" href="artists/">View all artists</a>
         </div>
         <div class="card-grid">
           <article class="card">
@@ -116,123 +151,72 @@
               <span>Mythic</span>
             </div>
           </article>
-          <article class="card">
-            <h3>Rook Ashfall</h3>
-            <p class="role">Shadow Crafter</p>
-            <div class="tags">
-              <span>Neo-trad</span>
-              <span>Moody</span>
-              <span>Portraits</span>
-            </div>
-          </article>
         </div>
       </section>
 
-      <section class="section reveal" id="events" data-reveal>
+      <section class="section section--panel reveal" data-reveal>
         <div class="section__header">
-          <h2>Events and Deals</h2>
-          <p>Bi-weekly events - details updated often.</p>
-        </div>
-        <div class="tile-grid">
-          <article class="tile">
-            <h3>$20 Flash Day (Fridays and Saturdays)</h3>
-            <p>Limited sheets, quick slots, first-come, first-ink.</p>
-            <a class="btn btn--ghost" href="#schedule">See schedule</a>
-          </article>
-          <article class="tile">
-            <h3>5 for $80 Flash Deal</h3>
-            <p>Pick five mini designs and build a traveler sleeve.</p>
-            <a class="btn btn--ghost" href="#schedule">See schedule</a>
-          </article>
-          <article class="tile">
-            <h3>Game Night - $500 Tattoo Prize</h3>
-            <p>Campaign nights, raffle draws, and crit-hit rewards.</p>
-            <a class="btn btn--ghost" href="#schedule">See schedule</a>
-          </article>
-        </div>
-        <div class="panel panel--compact" id="schedule">
-          <h3>Schedule Placeholder</h3>
+          <h2>Origin Story</h2>
           <p>
-            Add event dates, ticket details, and RSVP links here when confirmed.
+            Dungeon Dweller Tattoos was born from a love of tabletop quests, hand-crafted
+            artistry, and a desire to build a space where every client feels like a hero.
+          </p>
+          <a class="text-link" href="about/">Read the full origin</a>
+        </div>
+        <div class="panel">
+          <h3>The Founding Oath</h3>
+          <p>
+            Replace this block with the founder's full journey, key milestones, and the
+            promise behind the guild hall.
           </p>
         </div>
       </section>
 
-      <section class="section section--panel reveal" id="services" data-reveal>
+      <section class="section reveal" data-reveal>
         <div class="section__header">
-          <h2>Services Beyond Tattoos</h2>
-          <p>Offerings that keep the guild hall buzzing between sessions.</p>
+          <h2>Upcoming Events</h2>
+          <p>Seasonal happenings and flash deals keep the tavern lively.</p>
+          <a class="text-link" href="events/">View all events</a>
         </div>
-        <div class="service-grid">
-          <div class="service">
-            <span class="service__icon" aria-hidden="true">&#10022;</span>
-            <span>Tooth gems</span>
-          </div>
-          <div class="service">
-            <span class="service__icon" aria-hidden="true">&#10022;</span>
-            <span>Oddities and rarities</span>
-          </div>
-          <div class="service">
-            <span class="service__icon" aria-hidden="true">&#10022;</span>
-            <span>Handmade goods</span>
-          </div>
-          <div class="service">
-            <span class="service__icon" aria-hidden="true">&#10022;</span>
-            <span>Henna</span>
-          </div>
-          <div class="service">
-            <span class="service__icon" aria-hidden="true">&#10022;</span>
-            <span>Art classes</span>
-          </div>
-          <div class="service">
-            <span class="service__icon" aria-hidden="true">&#10022;</span>
-            <span>Paint and sip</span>
-          </div>
-          <div class="service">
-            <span class="service__icon" aria-hidden="true">&#10022;</span>
-            <span>D and D hosting</span>
-          </div>
-          <div class="service">
-            <span class="service__icon" aria-hidden="true">&#10022;</span>
-            <span>Game tournaments</span>
-          </div>
-          <div class="service">
-            <span class="service__icon" aria-hidden="true">&#10022;</span>
-            <span>Table rental (Mon and Sun)</span>
-          </div>
+        <div class="tile-grid">
+          <article class="tile">
+            <h3>$20 Flash Day</h3>
+            <p>Limited sheets, quick slots, first-come, first-ink.</p>
+          </article>
+          <article class="tile">
+            <h3>Game Night - $500 Tattoo Prize</h3>
+            <p>Campaign nights, raffle draws, and crit-hit rewards.</p>
+          </article>
         </div>
       </section>
 
-      <section class="section reveal" id="location" data-reveal>
+      <section class="section section--panel reveal" data-reveal>
         <div class="section__header">
-          <h2>Gautier, Mississippi - Opening February 2026</h2>
-          <p>Address placeholder. Replace with final location.</p>
+          <h2>Find the Guild Hall</h2>
+          <p>Gautier, Mississippi. Opening February 2026.</p>
         </div>
         <div class="location-grid">
-          <div class="panel map-card">
-            <div class="map-card__art">Map placeholder</div>
-            <div class="map-card__meta">
-              <p>123 Adventurer Ave, Gautier, MS</p>
-              <p>Parking, accessibility info, and shop hours can go here.</p>
+          <div class="panel">
+            <h3>Visit the Studio</h3>
+            <p>123 Adventurer Ave, Gautier, MS</p>
+            <p>Parking, accessibility info, and shop hours can go here.</p>
+            <div class="section__actions">
+              <a class="btn btn--ghost" href="location/">Get location details</a>
             </div>
           </div>
-          <div class="panel countdown" data-date="2026-02-15T18:00:00">
-            <h3>Countdown to Grand Opening</h3>
-            <p class="countdown__label">
-              Date is editable in <code>app.js</code>.
-            </p>
-            <div class="countdown__timer" id="countdown-timer">
-              <div><span id="days">--</span><small>Days</small></div>
-              <div><span id="hours">--</span><small>Hours</small></div>
-              <div><span id="minutes">--</span><small>Minutes</small></div>
-              <div><span id="seconds">--</span><small>Seconds</small></div>
+          <div class="panel">
+            <h3>Ready to Book?</h3>
+            <p>Reserve your session or ask questions about availability.</p>
+            <div class="section__actions">
+              <a class="btn btn--primary" href="book/">Book a Session</a>
+              <a class="btn btn--ghost" href="/services/index.html">Browse services</a>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="footer" id="book">
+    <footer class="footer">
       <div class="footer__cta">
         <h2>Start Your Quest - Book Now</h2>
         <p>Booking links are placeholders. Update with real URLs.</p>
@@ -245,9 +229,8 @@
         </div>
       </div>
       <div class="footer__fineprint">
-        <p>Roll for Ink. Wear Your Legend.</p>
+        <p>🚧website under construction🚧</p>
         <p>&copy; 2026 Dungeon Dweller Tattoos. All rights reserved.</p>
-        <p>Created by Cyber Solutions LLC.</p>
       </div>
     </footer>
   </body>
