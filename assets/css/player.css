@@ -1,0 +1,143 @@
+:root {
+  --ddt-player-height: 110px;
+}
+
+body {
+  padding-bottom: calc(var(--ddt-player-height, 110px) + env(safe-area-inset-bottom));
+}
+
+#ddt-player {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background: rgba(12, 13, 16, 0.95);
+  border-top: 1px solid rgba(242, 215, 160, 0.18);
+  box-shadow: 0 0 18px rgba(255, 181, 71, 0.22);
+  backdrop-filter: blur(8px);
+  color: inherit;
+  padding: 0.65rem 0.9rem calc(0.65rem + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#ddt-player * {
+  font-family: inherit;
+}
+
+.ddt-player__row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.ddt-player__meta {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.ddt-player__title {
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+}
+
+.ddt-player__time {
+  font-size: 0.8rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.ddt-player__controls {
+  flex-wrap: wrap;
+}
+
+.ddt-player__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+#ddt-player button {
+  background: rgba(30, 33, 36, 0.9);
+  color: var(--gold);
+  border: 1px solid rgba(242, 215, 160, 0.22);
+  border-radius: 10px;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  min-height: 36px;
+}
+
+#ddt-player button:hover {
+  box-shadow: 0 0 12px rgba(255, 181, 71, 0.35);
+}
+
+#ddt-player button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+#ddt-player button.is-active {
+  background: rgba(255, 181, 71, 0.14);
+}
+
+.ddt-player__range {
+  display: flex;
+  align-items: center;
+}
+
+.ddt-player__range input[type="range"] {
+  width: 100%;
+  accent-color: var(--torch);
+}
+
+.ddt-player__range--seek {
+  flex: 1 1 220px;
+  min-width: 140px;
+}
+
+.ddt-player__range--vol {
+  flex: 0 0 120px;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --ddt-player-height: 150px;
+  }
+
+  .ddt-player__meta {
+    gap: 0.35rem;
+  }
+
+  .ddt-player__controls {
+    gap: 0.5rem;
+  }
+
+  .ddt-player__range--vol {
+    flex: 1 1 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --ddt-player-height: 170px;
+  }
+
+  #ddt-player {
+    padding: 0.6rem 0.75rem calc(0.6rem + env(safe-area-inset-bottom));
+  }
+
+  #ddt-player button {
+    flex: 1 1 68px;
+    text-align: center;
+  }
+
+  .ddt-player__buttons {
+    width: 100%;
+  }
+}
