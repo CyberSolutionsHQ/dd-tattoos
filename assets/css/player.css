@@ -6,12 +6,20 @@ body {
   padding-bottom: calc(var(--ddt-player-height, 110px) + env(safe-area-inset-bottom));
 }
 
+.ddt-player {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999999;
+}
+
 #ddt-player {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1000;
+  z-index: 999999;
   background: rgba(12, 13, 16, 0.95);
   border-top: 1px solid rgba(242, 215, 160, 0.18);
   box-shadow: 0 0 18px rgba(255, 181, 71, 0.22);
@@ -103,6 +111,12 @@ body {
 
 .ddt-player__range--vol {
   flex: 0 0 120px;
+}
+
+.ddt-player__hint {
+  font-size: 0.75rem;
+  color: var(--muted);
+  min-height: 1rem;
 }
 
 @media (max-width: 640px) {

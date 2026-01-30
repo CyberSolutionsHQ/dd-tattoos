@@ -1,10 +1,44 @@
 (() => {
   const STORAGE_KEY = "ddt_player_state_v1";
 
+  const normalizeBase = (base) => {
+    if (!base) return "/";
+    let next = base.trim();
+    if (!next.startsWith("/")) next = `/${next}`;
+    if (!next.endsWith("/")) next += "/";
+    return next;
+  };
+
+  const computeSiteBase = () => {
+    const meta = document.querySelector('meta[name="site-base"]');
+    let base = meta && meta.content ? meta.content.trim() : "";
+    if (!base) {
+      const parts = window.location.pathname.split("/").filter(Boolean);
+      if (window.location.hostname.endsWith("github.io") && parts.length > 0) {
+        base = `/${parts[0]}/`;
+      } else {
+        base = "/";
+      }
+    }
+    return normalizeBase(base);
+  };
+
+  const getSiteBase = () => {
+    if (window.SITE_BASE) {
+      window.SITE_BASE = normalizeBase(window.SITE_BASE);
+      return window.SITE_BASE;
+    }
+    const base = computeSiteBase();
+    window.SITE_BASE = base;
+    return base;
+  };
+
+  const SITE_BASE = getSiteBase();
+
   const rawPlaylist = [
     {
       title: "t-metal",
-      src: "/assets/sounds/music/t-metal.mp3",
+      src: `${SITE_BASE}assets/sounds/music/t-metal.mp3`,
       loopDefault: true
     },
     {
@@ -25,6 +59,7 @@
   const stopBtn = getEl("ddtStop");
   const nextBtn = getEl("ddtNext");
   const loopBtn = getEl("ddtLoop");
+  const hintEl = getEl("ddtHint");
   const seekInput = getEl("ddtSeek");
   const volInput = getEl("ddtVol");
 
@@ -101,6 +136,17 @@
     loopBtn.setAttribute("aria-pressed", String(loopEnabled));
   };
 
+  const setHint = (message) => {
+    if (!hintEl) return;
+    if (message) {
+      hintEl.textContent = message;
+      hintEl.style.display = "block";
+      return;
+    }
+    hintEl.textContent = "";
+    hintEl.style.display = "none";
+  };
+
   const setTrack = (index, { preserveTime = false } = {}) => {
     const safeIndex = (index + playlist.length) % playlist.length;
     const track = playlist[safeIndex];
@@ -130,9 +176,11 @@
     if (playPromise && typeof playPromise.then === "function") {
       playPromise
         .then(() => {
+          setHint("");
           updatePlayButton();
         })
         .catch(() => {
+          setHint("Tap Play to enable sound.");
           updatePlayButton();
         });
     } else {
@@ -148,6 +196,7 @@
     }
     audio.pause();
     saveState({ playing: false, time: audio.currentTime });
+    setHint("");
     updatePlayButton();
   };
 
@@ -155,6 +204,7 @@
     audio.pause();
     audio.currentTime = 0;
     saveState({ playing: false, time: 0 });
+    setHint("");
     updatePlayButton();
     updateTimeUI();
   };

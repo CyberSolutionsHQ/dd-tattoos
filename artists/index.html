@@ -183,6 +183,27 @@
         <p>&copy; 2026 Dungeon Dweller Tattoos. All rights reserved.</p>
       </div>
     </footer>
-    <script src="/assets/js/player-init.js"></script>
+    <script>
+      (function () {
+        var meta = document.querySelector('meta[name="site-base"]');
+        var base = meta && meta.content ? meta.content.trim() : '';
+        if (!base) {
+          var parts = location.pathname.split('/').filter(Boolean);
+          if (location.hostname.endsWith('github.io') && parts.length > 0) {
+            base = '/' + parts[0] + '/';
+          } else {
+            base = '/';
+          }
+        }
+        if (!base.endsWith('/')) base += '/';
+        window.SITE_BASE = base;
+        var s1 = document.createElement('script');
+        s1.src = base + 'assets/js/site-base.js';
+        document.body.appendChild(s1);
+        var s2 = document.createElement('script');
+        s2.src = base + 'assets/js/player-init.js';
+        document.body.appendChild(s2);
+      })();
+    </script>
   </body>
 </html>
