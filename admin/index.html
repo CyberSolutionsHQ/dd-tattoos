@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin | Dungeon Dweller Tattoos</title>
+    <meta
+      name="description"
+      content="Dungeon Dweller Tattoos admin dashboard for authenticated site editors."
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="admin.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script defer src="../app.js"></script>
+    <script defer src="admin.js"></script>
+  </head>
+  <body class="admin-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="logo" href="../index.html">Dungeon Dweller Tattoos</a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+        >
+          <span class="sr-only">Toggle menu</span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../artists/index.html">Artists</a></li>
+          <li><a href="../services/index.html">Services</a></li>
+          <li><a href="../book/index.html">Book</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="admin-shell">
+      <section class="section admin-hero">
+        <div class="section__header">
+          <h1>Admin Dashboard</h1>
+          <p id="admin-status" role="status">Connect Supabase to begin.</p>
+        </div>
+      </section>
+
+      <section class="section admin-layout" id="setup-panel">
+        <form class="panel admin-form" id="config-form">
+          <h2>Supabase Connection</h2>
+          <label>
+            Project URL
+            <input id="supabase-url" name="url" type="url" placeholder="https://your-project.supabase.co" required />
+          </label>
+          <label>
+            Public anon key
+            <input id="supabase-anon-key" name="anonKey" type="password" autocomplete="off" required />
+          </label>
+          <button class="btn btn--primary" type="submit">Save Connection</button>
+          <p class="admin-note">Use the public anon key only. RLS policies protect admin actions.</p>
+        </form>
+
+        <form class="panel admin-form" id="login-form" hidden>
+          <h2>Admin Login</h2>
+          <label>
+            Email
+            <input id="admin-email" name="email" type="email" autocomplete="email" required />
+          </label>
+          <label>
+            Password
+            <input id="admin-password" name="password" type="password" autocomplete="current-password" required />
+          </label>
+          <button class="btn btn--primary" type="submit">Log In</button>
+        </form>
+      </section>
+
+      <section class="section" id="unauthorized-panel" hidden>
+        <div class="panel">
+          <h2>Access denied</h2>
+          <p>This account is authenticated but does not have the admin role.</p>
+          <button class="btn btn--ghost" type="button" data-action="logout">Log Out</button>
+        </div>
+      </section>
+
+      <section class="section admin-dashboard" id="dashboard" hidden>
+        <div class="admin-toolbar">
+          <p id="admin-user"></p>
+          <button class="btn btn--ghost" type="button" data-action="logout">Log Out</button>
+        </div>
+
+        <div class="admin-tabs" role="tablist" aria-label="Admin sections">
+          <button type="button" class="is-active" data-tab="home">Dashboard</button>
+          <button type="button" data-tab="site-settings">Site Settings</button>
+          <button type="button" data-tab="services">Services & Prices</button>
+          <button type="button" data-tab="artists">Artists</button>
+          <button type="button" data-tab="portfolio">Portfolio</button>
+          <button type="button" data-tab="content-blocks">Content Blocks</button>
+        </div>
+
+        <section class="panel admin-panel is-active" data-panel="home">
+          <h2>Dashboard Home</h2>
+          <div class="admin-card-grid">
+            <article class="admin-stat"><strong id="stat-settings">-</strong><span>Site Settings</span></article>
+            <article class="admin-stat"><strong id="stat-services">-</strong><span>Services & Prices</span></article>
+            <article class="admin-stat"><strong id="stat-artists">-</strong><span>Artists</span></article>
+            <article class="admin-stat"><strong id="stat-portfolio">-</strong><span>Portfolio</span></article>
+            <article class="admin-stat"><strong id="stat-blocks">-</strong><span>Content Blocks</span></article>
+          </div>
+          <div class="admin-note-box">
+            <p id="admin-role-status">Role: unknown</p>
+            <p id="admin-last-updated">Last updated content: not loaded yet.</p>
+          </div>
+        </section>
+
+        <section class="panel admin-panel" data-panel="site-settings">
+          <h2>Site Settings Editor</h2>
+          <form class="admin-form admin-grid-form" id="settings-form">
+            <label>Site title <input name="site_title" required /></label>
+            <label>Tagline <input name="tagline" /></label>
+            <label>Hero heading <input name="hero_heading" /></label>
+            <label>Hero subheading <textarea name="hero_subheading"></textarea></label>
+            <label>About heading <input name="about_heading" /></label>
+            <label>About body <textarea name="about_body"></textarea></label>
+            <label>Phone <input name="phone" type="tel" /></label>
+            <label>Email <input name="email" type="email" /></label>
+            <label>Address <textarea name="address"></textarea></label>
+            <label>Hours <textarea name="hours"></textarea></label>
+            <label>Facebook URL <input name="facebook_url" type="url" /></label>
+            <label>Instagram URL <input name="instagram_url" type="url" /></label>
+            <label>TikTok URL <input name="tiktok_url" type="url" /></label>
+            <label>Booking link <input name="booking_link" /></label>
+            <button class="btn btn--primary" type="submit">Save Site Settings</button>
+          </form>
+        </section>
+
+        <section class="panel admin-panel" data-panel="services">
+          <h2>Services & Prices</h2>
+          <form class="admin-form admin-grid-form" id="service-form">
+            <input type="hidden" name="id" />
+            <label>Name <input name="name" required /></label>
+            <label>Price label <input name="price_label" placeholder="$80 flash deal" /></label>
+            <label>Base price <input name="base_price" type="number" step="0.01" min="0" /></label>
+            <label>Display order <input name="display_order" type="number" value="0" /></label>
+            <label class="admin-check"><input name="is_active" type="checkbox" checked /> Active</label>
+            <label>Description <textarea name="description"></textarea></label>
+            <button class="btn btn--primary" type="submit">Save Service</button>
+            <button class="btn btn--ghost" type="reset">Clear</button>
+          </form>
+          <div class="admin-list" id="services-list"></div>
+        </section>
+
+        <section class="panel admin-panel" data-panel="artists">
+          <h2>Artists</h2>
+          <form class="admin-form admin-grid-form" id="artist-form">
+            <input type="hidden" name="id" />
+            <input type="hidden" name="profile_image_url" />
+            <input type="hidden" name="profile_image_path" />
+            <label>Name <input name="name" required /></label>
+            <label>Slug <input name="slug" required /></label>
+            <label>Specialty <input name="specialty" /></label>
+            <label>Years experience <input name="years_experience" type="number" min="0" /></label>
+            <label>Instagram URL <input name="instagram_url" type="url" /></label>
+            <label>Sort order <input name="sort_order" type="number" value="0" /></label>
+            <label>Profile photo <input name="photo_file" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" /></label>
+            <label class="admin-check"><input name="remove_photo" type="checkbox" /> Remove current photo</label>
+            <label class="admin-check"><input name="is_active" type="checkbox" checked /> Active</label>
+            <label>Bio <textarea name="bio"></textarea></label>
+            <button class="btn btn--primary" type="submit">Save Artist</button>
+            <button class="btn btn--ghost" type="reset">Clear</button>
+          </form>
+          <div class="admin-list" id="artists-list"></div>
+        </section>
+
+        <section class="panel admin-panel" data-panel="portfolio">
+          <h2>Portfolio Images</h2>
+          <form class="admin-form admin-grid-form" id="portfolio-form">
+            <input type="hidden" name="id" />
+            <input type="hidden" name="image_url" />
+            <input type="hidden" name="storage_path" />
+            <label>Artist <select name="artist_id" id="portfolio-artist"></select></label>
+            <label>Title <input name="title" /></label>
+            <label>Caption <input name="caption" /></label>
+            <label>Category / style <input name="category" /></label>
+            <label>Alt text <input name="alt_text" required /></label>
+            <label>Sort order <input name="sort_order" type="number" value="0" /></label>
+            <label>Image <input name="image_file" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" /></label>
+            <label class="admin-check"><input name="is_featured" type="checkbox" /> Featured</label>
+            <label class="admin-check"><input name="is_published" type="checkbox" checked /> Published</label>
+            <button class="btn btn--primary" type="submit">Save Image</button>
+            <button class="btn btn--ghost" type="reset">Clear</button>
+          </form>
+          <div class="admin-list" id="portfolio-list"></div>
+        </section>
+
+        <section class="panel admin-panel" data-panel="content-blocks">
+          <h2>Content Blocks</h2>
+          <form class="admin-form admin-grid-form" id="content-block-form">
+            <input type="hidden" name="id" />
+            <label>Section key <input name="section_key" placeholder="home_intro" required /></label>
+            <label>Title <input name="title" required /></label>
+            <label>Display order <input name="display_order" type="number" value="0" /></label>
+            <label class="admin-check"><input name="is_active" type="checkbox" checked /> Active</label>
+            <label>Body <textarea name="body"></textarea></label>
+            <button class="btn btn--primary" type="submit">Save Content Block</button>
+            <button class="btn btn--ghost" type="reset">Clear</button>
+          </form>
+          <div class="admin-list" id="content-blocks-list"></div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

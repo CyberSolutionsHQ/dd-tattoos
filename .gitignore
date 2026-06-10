@@ -7,3 +7,12 @@ secrets/
 
 context_logs/
 **/context_logs/
+.env
+.env.*
+!.env.example
+assets/js/supabase-config.js
+assets/js/supabase-config.json
+supabase/.temp/
+test-results/
+playwright-report/
+node_modules/

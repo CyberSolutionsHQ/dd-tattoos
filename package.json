@@ -1,0 +1,16 @@
+{
+  "name": "dd-tattoos-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static Dungeon Dweller Tattoos website with Supabase admin tooling.",
+  "scripts": {
+    "build": "node scripts/verify-site.js",
+    "lint": "node scripts/lint-site.js",
+    "test": "playwright test",
+    "dev": "node scripts/dev-server.js",
+    "preview": "node scripts/dev-server.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.53.0"
+  }
+}

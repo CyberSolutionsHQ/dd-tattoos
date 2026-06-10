@@ -1,157 +1,36 @@
-:root {
-  --ddt-player-height: 110px;
-}
-
-body {
-  padding-bottom: calc(var(--ddt-player-height, 110px) + env(safe-area-inset-bottom));
-}
-
-.ddt-player {
+.music-toggle {
   position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 999999;
-}
-
-#ddt-player {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 999999;
-  background: rgba(12, 13, 16, 0.95);
-  border-top: 1px solid rgba(242, 215, 160, 0.18);
-  box-shadow: 0 0 18px rgba(255, 181, 71, 0.22);
-  backdrop-filter: blur(8px);
-  color: inherit;
-  padding: 0.65rem 0.9rem calc(0.65rem + env(safe-area-inset-bottom));
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-#ddt-player * {
-  font-family: inherit;
-}
-
-.ddt-player__row {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.ddt-player__meta {
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.ddt-player__title {
-  font-weight: 600;
-  color: var(--gold);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-size: 0.82rem;
-}
-
-.ddt-player__time {
-  font-size: 0.8rem;
-  color: var(--muted);
-  white-space: nowrap;
-}
-
-.ddt-player__controls {
-  flex-wrap: wrap;
-}
-
-.ddt-player__buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-#ddt-player button {
-  background: rgba(30, 33, 36, 0.9);
-  color: var(--gold);
-  border: 1px solid rgba(242, 215, 160, 0.22);
-  border-radius: 10px;
-  padding: 0.35rem 0.6rem;
-  font-size: 0.8rem;
+  right: 18px;
+  bottom: 18px;
+  z-index: 999;
+  min-height: 42px;
+  max-width: calc(100vw - 36px);
+  padding: 0.65rem 0.9rem;
+  border: 1px solid rgba(242, 215, 160, 0.28);
+  border-radius: 999px;
+  background: rgba(12, 13, 16, 0.92);
+  color: var(--gold, #f2d7a0);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45), 0 0 18px rgba(255, 181, 71, 0.22);
   cursor: pointer;
-  min-height: 36px;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  backdrop-filter: blur(8px);
 }
 
-#ddt-player button:hover {
-  box-shadow: 0 0 12px rgba(255, 181, 71, 0.35);
+.music-toggle:hover,
+.music-toggle:focus-visible {
+  border-color: rgba(242, 215, 160, 0.56);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5), 0 0 24px rgba(255, 181, 71, 0.3);
 }
 
-#ddt-player button:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 2px;
-}
-
-#ddt-player button.is-active {
-  background: rgba(255, 181, 71, 0.14);
-}
-
-.ddt-player__range {
-  display: flex;
-  align-items: center;
-}
-
-.ddt-player__range input[type="range"] {
-  width: 100%;
-  accent-color: var(--torch);
-}
-
-.ddt-player__range--seek {
-  flex: 1 1 220px;
-  min-width: 140px;
-}
-
-.ddt-player__range--vol {
-  flex: 0 0 120px;
-}
-
-.ddt-player__hint {
-  font-size: 0.75rem;
-  color: var(--muted);
-  min-height: 1rem;
-}
-
-@media (max-width: 640px) {
-  :root {
-    --ddt-player-height: 150px;
-  }
-
-  .ddt-player__meta {
-    gap: 0.35rem;
-  }
-
-  .ddt-player__controls {
-    gap: 0.5rem;
-  }
-
-  .ddt-player__range--vol {
-    flex: 1 1 120px;
-  }
-}
-
-@media (max-width: 480px) {
-  :root {
-    --ddt-player-height: 170px;
-  }
-
-  #ddt-player {
-    padding: 0.6rem 0.75rem calc(0.6rem + env(safe-area-inset-bottom));
-  }
-
-  #ddt-player button {
-    flex: 1 1 68px;
-    text-align: center;
-  }
-
-  .ddt-player__buttons {
-    width: 100%;
+@media (max-width: 520px) {
+  .music-toggle {
+    right: 12px;
+    bottom: 12px;
+    min-height: 40px;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.82rem;
   }
 }

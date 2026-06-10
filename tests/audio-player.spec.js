@@ -80,6 +80,33 @@ const assertPlayerAssets = async (page) => {
 
 const runPageAssertions = async (page, url) => {
   const consoleErrors = [];
+  await page.addInitScript(() => {
+    window.__DDT_TEST_BLOCK_AUTOPLAY = true;
+    window.__ddtAllowMusicPlay = false;
+    const NativeAudio = window.Audio;
+    const originalPlay = HTMLMediaElement.prototype.play;
+    window.Audio = function (src) {
+      const audio = new NativeAudio(src);
+      audio.play = function () {
+        if (!window.__ddtAllowMusicPlay) {
+          return Promise.reject(new DOMException('Autoplay blocked in test', 'NotAllowedError'));
+        }
+        return Promise.resolve();
+      };
+      return audio;
+    };
+    HTMLMediaElement.prototype.play = function () {
+      if (!window.__ddtAllowMusicPlay) {
+        return Promise.reject(new DOMException('Autoplay blocked in test', 'NotAllowedError'));
+      }
+      return Promise.resolve();
+    };
+    window.__ddtRestorePlay = () => {
+      window.Audio = NativeAudio;
+      HTMLMediaElement.prototype.play = originalPlay;
+    };
+  });
+
   page.on('console', (msg) => {
     if (msg.type() === 'error') {
       consoleErrors.push(msg.text());
@@ -91,15 +118,25 @@ const runPageAssertions = async (page, url) => {
   await page.goto(url, { waitUntil: 'domcontentloaded' });
   await assetCheck;
 
-  const player = page.locator('#ddt-player');
-  await expect(player).toBeVisible();
-  await expect(page.locator('#ddtPlay')).toBeVisible();
+  await expect(page.locator('#ddt-player')).toHaveCount(0);
+  await expect(page.locator('audio[controls]')).toHaveCount(0);
 
-  const audioSrc = await page.locator('#ddtAudio').evaluate((el) => el.currentSrc || el.src || '');
+  const toggle = page.locator('.music-toggle');
+  await expect(toggle).toBeVisible();
+  await expect(toggle).toHaveText('Enable Music');
+
+  const audioSrc = await page.evaluate(() => window.__ddtMusic?.audio?.currentSrc || window.__ddtMusic?.audio?.src || '');
   expect(audioSrc).toContain('t-metal.mp3');
+  const volume = await page.evaluate(() => window.__ddtMusic?.audio?.volume);
+  expect(volume).toBeGreaterThanOrEqual(0.45);
+  expect(volume).toBeLessThanOrEqual(0.5);
+  await expect.poll(() => page.evaluate(() => window.__ddtMusic?.audio?.loop)).toBe(true);
 
-  await page.locator('#ddtPlay').click();
-  await expect(page.locator('#ddtPlay')).toHaveText(/Play|Pause/);
+  await page.evaluate(() => {
+    window.__ddtAllowMusicPlay = true;
+  });
+  await toggle.click();
+  await expect(toggle).toHaveText('Mute Music');
 
   expect(consoleErrors, `Console errors on ${url}: ${consoleErrors.join(' | ')}`).toEqual([]);
 };

@@ -483,6 +483,35 @@ button:focus-visible {
   border-radius: calc(var(--radius) - 8px);
   border: 1px dashed rgba(242, 215, 160, 0.24);
   background: rgba(20, 22, 25, 0.5);
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.tome-slot--image {
+  align-content: start;
+  gap: 0.65rem;
+  margin: 0;
+}
+
+.tome-slot--image img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 10px);
+}
+
+.tome-slot--image figcaption {
+  display: grid;
+  gap: 0.2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.tome-slot--image strong {
+  color: var(--gold);
 }
 
 .service {
